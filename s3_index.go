@@ -39,7 +39,7 @@ func NewS3Index(database string, table string, layers []Layer) (TableIndex, erro
 
 	ctx := context.Background()
 	for _, layer := range sLayers {
-		prefix := path.Join(layer.Config.Prefix, database, table, "data")
+		prefix := path.Join(layer.Config.Prefix, database, table)
 		metaFiles, err := layer.listMetadataFiles(ctx, prefix)
 		if err != nil {
 			return nil, err
@@ -187,7 +187,7 @@ func (J *S3Index) Stop() {
 func (J *S3Index) findHours(options QueryOptions, layer s3Layer) ([]time.Time, error) {
 	var hours []time.Time
 	ctx := context.Background()
-	prefix := path.Join(layer.Config.Prefix, J.database, J.table, "data")
+	prefix := path.Join(layer.Config.Prefix, J.database, J.table)
 	metaFiles, err := layer.listMetadataFiles(ctx, prefix)
 	if err != nil {
 		return nil, err

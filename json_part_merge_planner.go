@@ -43,7 +43,7 @@ func (J *jsonPartIndex) GetMergePlan(writerId string, layer string, iteration in
 	}
 	uid, _ := uuid.NewUUID()
 
-	tablePath := path.Join(J.rootPath, J.database, J.table, "data") + "/"
+	tablePath := path.Join(J.rootPath, J.database, J.table) + "/"
 	partPath := J.idxPath[len(tablePath):]
 	return MergePlan{
 		Layer:     layer,

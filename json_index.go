@@ -50,7 +50,7 @@ func NewJSONIndex(root string, database string, table string, layers []Layer) (T
 		layers:   jLayers,
 	}
 	for _, layer := range jLayers {
-		prefix := filepath.Join(layer.Path, database, table, "data")
+		prefix := filepath.Join(layer.Path, database, table)
 		err := filepath.Walk(prefix, func(path string, info fs.FileInfo, err error) error {
 			if info == nil {
 				return nil
@@ -204,7 +204,7 @@ func (J *JSONIndex) Stop() {
 
 func (J *JSONIndex) findHours(options QueryOptions, layer jsonLayer) ([]time.Time, error) {
 	var hours []time.Time
-	err := filepath.Walk(path.Join(layer.Path, J.database, J.table, "data"), func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(path.Join(layer.Path, J.database, J.table), func(path string, info os.FileInfo, err error) error {
 		if info == nil {
 			return nil
 		}

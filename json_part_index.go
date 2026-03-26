@@ -64,7 +64,7 @@ func newJsonPartIndex(opts jsonPartIdxOpts) (*jsonPartIndex, error) {
 		rootPath:     opts.rootPath,
 		database:     opts.database,
 		table:        opts.table,
-		idxPath:      path.Join(opts.rootPath, opts.database, opts.table, "data", opts.partPath),
+		idxPath:      path.Join(opts.rootPath, opts.database, opts.table, opts.partPath),
 		entries:      &sync.Map{},
 		filesInMerge: make(map[string]bool),
 		layers:       opts.layers,

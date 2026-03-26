@@ -91,7 +91,7 @@ func newS3Layer(layer Layer) (s3Layer, error) {
 }
 
 func (l *s3Layer) objectPath(database, table, partPath string) string {
-	return path.Join(l.Config.Prefix, database, table, "data", partPath, "metadata.json")
+	return path.Join(l.Config.Prefix, database, table, partPath, "metadata.json")
 }
 
 func (l *s3Layer) kvObjectPath() string {

@@ -531,5 +531,5 @@ func (J *s3PartIndex) Get(layer string, _path string) *IndexEntry {
 }
 
 func (J *s3PartIndex) s3Prefix() string {
-	return path.Join(J.s3Layer.Config.Prefix, J.database, J.table, "data") + "/"
+	return path.Join(J.s3Layer.Config.Prefix, J.database, J.table) + "/"
 }

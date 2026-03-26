@@ -67,7 +67,7 @@ func (j *s3DBIndex) Paths(database string, table string) ([]string, error) {
 	res := map[string]bool{}
 	ctx := context.Background()
 	for _, l := range j.layers {
-		prefix := path.Join(l.Config.Prefix, database, table, "data")
+		prefix := path.Join(l.Config.Prefix, database, table)
 		metaFiles, err := l.listMetadataFiles(ctx, prefix)
 		if err != nil {
 			return nil, err
