@@ -8,7 +8,7 @@ import (
 )
 
 var layers = []Layer{
-	{"file://./_testdata", "l1", "fs", 20},
+	{"file://./_testdata", "l1", "fs", 20, "", ""},
 }
 
 func TestSave(t *testing.T) {

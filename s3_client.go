@@ -69,6 +69,12 @@ func newS3Layer(layer Layer) (s3Layer, error) {
 	if err != nil {
 		return s3Layer{}, err
 	}
+	if cfg.Key == "" {
+		cfg.Key = layer.Key
+	}
+	if cfg.Secret == "" {
+		cfg.Secret = layer.Secret
+	}
 	client, err := minio.New(cfg.Endpoint, &minio.Options{
 		Creds:  credentials.NewStaticV4(cfg.Key, cfg.Secret, ""),
 		Secure: cfg.Secure,

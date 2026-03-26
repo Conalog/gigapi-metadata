@@ -28,6 +28,8 @@ type Layer struct {
 	Name   string `json:"name"`
 	Type   string `json:"type"`
 	TTLSec int32  `json:"ttl_sec"`
+	Key    string `json:"key,omitempty"`
+	Secret string `json:"secret,omitempty"`
 }
 
 type IndexEntry struct {

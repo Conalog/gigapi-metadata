@@ -21,7 +21,7 @@ func getS3TestURL() string {
 }
 
 var s3TestLayers = []Layer{
-	{getS3TestURL(), "l1", "s3", 20},
+	{getS3TestURL(), "l1", "s3", 20, "", ""},
 }
 
 func skipIfNoS3(t *testing.T) {

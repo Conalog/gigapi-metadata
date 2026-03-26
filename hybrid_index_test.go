@@ -13,7 +13,7 @@ func TestNewIndexFSOnly(t *testing.T) {
 		{10, 10 * 1024 * 1024, 1},
 	}
 	fsLayers := []Layer{
-		{"file://./_testdata", "l1", "fs", 20},
+		{"file://./_testdata", "l1", "fs", 20, "", ""},
 	}
 	idx, err := NewIndex("_testdata", "default", "test", fsLayers)
 	if err != nil {
@@ -38,8 +38,8 @@ func TestNewIndexMixedLayers(t *testing.T) {
 	}
 	skipIfNoS3(t)
 	mixedLayers := []Layer{
-		{"file://./_testdata", "l1", "fs", 20},
-		{getS3TestURL(), "l2", "s3", 0},
+		{"file://./_testdata", "l1", "fs", 20, "", ""},
+		{getS3TestURL(), "l2", "s3", 0, "", ""},
 	}
 	idx, err := NewIndex("_testdata", "default", "test", mixedLayers)
 	if err != nil {
@@ -66,8 +66,8 @@ func TestHybridMovePlanLayerTo(t *testing.T) {
 	}
 	skipIfNoS3(t)
 	mixedLayers := []Layer{
-		{"file://./_testdata", "l1", "fs", 1},
-		{getS3TestURL(), "l2", "s3", 0},
+		{"file://./_testdata", "l1", "fs", 1, "", ""},
+		{getS3TestURL(), "l2", "s3", 0, "", ""},
 	}
 	idx, err := NewIndex("_testdata", "default", "test", mixedLayers)
 	if err != nil {
@@ -95,7 +95,7 @@ func TestHybridMovePlanLayerTo(t *testing.T) {
 
 func TestNewIndexUnsupportedType(t *testing.T) {
 	badLayers := []Layer{
-		{"file://./_testdata", "l1", "unknown", 20},
+		{"file://./_testdata", "l1", "unknown", 20, "", ""},
 	}
 	_, err := NewIndex("_testdata", "default", "test", badLayers)
 	if err == nil {
