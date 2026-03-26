@@ -1,4 +1,4 @@
-module github.com/gigapi/metadata
+module github.com/conalog/gigapi-metadata
 
 go 1.25
 
